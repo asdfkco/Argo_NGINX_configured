@@ -1,4 +1,5 @@
 apiVersion: apps/v1
+# kind: Rollout
 kind: Deployment
 metadata:
   name: nginx
@@ -18,3 +19,15 @@ spec:
           image: asdfkco/nginx-oss:nginxstore 
           ports:
             - containerPort: 80
+      volumeMounts:
+        - name: nginx-conf-d
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: nginx-conf-d
+        configMap:
+          name: nginx-plus-conf-d
+      # strategy:
+      #   canary:
+      #     maxSurge: 1
+      #     maxUnavailable: 1
+
