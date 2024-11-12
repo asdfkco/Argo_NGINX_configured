@@ -9,7 +9,7 @@ data:
         listen 80; 
 
         location / { 
-          root /usr/share/nginx/html/;
+          root /usr/share/nginx/html/http_test;
           index index.html;
         }
       } 
