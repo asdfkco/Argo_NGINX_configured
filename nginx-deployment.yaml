@@ -1,7 +1,9 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
+apiVersion: v1
+kind: Deployment
 metadata:
   name: nginx
+  annotations:
+    checksum/configmap: "{{ checksum .Values.configmap }}"
 spec:
   replicas: 2
   selector:
@@ -24,7 +26,3 @@ spec:
       - name: nginx-conf-d
         configMap:
           name: nginx-plus-conf-d
-  strategy:
-    canary:
-      maxSurge: 1
-      maxUnavailable: 1
