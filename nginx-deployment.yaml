@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
-  namespace: default
 spec:
   replicas: 2
   selector:
@@ -19,6 +18,7 @@ spec:
           image: asdfkco/nginx-oss:nginxstore 
           ports:
             - containerPort: 80
+<<<<<<< HEAD
       volumeMounts:
         - name: nginx-conf-d
           mountPath: /etc/nginx/conf.d
@@ -31,3 +31,5 @@ spec:
       #     maxSurge: 1
       #     maxUnavailable: 1
 
+=======
+>>>>>>> 80e762e696491fd77d285649e101a3b4b853311a
