@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx
   annotations:
-    checksum/configmap: "{{ checksum .Values.configmap }}"
+    configmap.reloader.stakater.com/reload: "nginx-plus-conf-d"
 spec:
   replicas: 2
   selector:
