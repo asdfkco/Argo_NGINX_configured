@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: nginx
@@ -17,14 +17,14 @@ spec:
           image: asdfkco/nginx-oss:nginxstore 
           ports:
             - containerPort: 80
-      volumeMounts:
-        - name: nginx-conf-d
-          mountPath: /etc/nginx/conf.d
+          volumeMounts:
+          - name: nginx-conf-d
+            mountPath: /etc/nginx/conf.d
       volumes:
       - name: nginx-conf-d
         configMap:
           name: nginx-plus-conf-d
-      strategy:
-        canary:
-          maxSurge: 1
-          maxUnavailable: 1
+  strategy:
+    canary:
+      maxSurge: 1
+      maxUnavailable: 1
