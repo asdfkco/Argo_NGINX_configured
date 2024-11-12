@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Rollout
 metadata:
   name: nginx
 spec:
@@ -24,3 +24,7 @@ spec:
       - name: nginx-conf-d
         configMap:
           name: nginx-plus-conf-d
+      strategy:
+        canary:
+          maxSurge: 1
+          maxUnavailable: 1
