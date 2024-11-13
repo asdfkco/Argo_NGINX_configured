@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx
   annotations:
-    configmap.reloader.stakater.com/reload: "nginx-plus-conf-d"
+    configmap.reloader.stakater.com/reload: "nginx-conf-d"
 spec:
   replicas: 2
   selector:
@@ -25,4 +25,4 @@ spec:
       volumes:
       - name: nginx-conf-d
         configMap:
-          name: nginx-plus-conf-d
+          name: nginx-conf-d
